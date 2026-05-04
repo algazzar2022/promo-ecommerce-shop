@@ -2,7 +2,7 @@
 
 import { Product, useStore } from "@/store/useStore";
 import { motion } from "framer-motion";
-import { ArrowLeft, Battery, Activity, ShoppingCart } from "lucide-react";
+import { Battery, Activity, ShoppingCart } from "lucide-react";
 
 interface ProductCardProps {
   product: Product;
