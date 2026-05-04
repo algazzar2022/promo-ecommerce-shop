@@ -57,10 +57,12 @@ export default function ProductCard({ product }: ProductCardProps) {
           <div className="flex flex-col gap-6 mt-auto">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-1.5 group/price">
-                {/* Official SAMA Riyal Symbol approximation (U+20C1) */}
-                <span className="text-brand-600 dark:text-brand-400">
-                  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" className="inline-block" aria-label="SAR">
-                    <path d="M7 4h2v13.5c0 1.38 1.12 2.5 2.5 2.5s2.5-1.12 2.5-2.5V11h2v6.5c0 2.48-2.02 4.5-4.5 4.5S7 19.98 7 17.5V4zm10 0h2v5h-2V4z" />
+                <span className="text-brand-600 dark:text-brand-400 group-hover:scale-110 transition-transform duration-300">
+                  <svg viewBox="0 0 100 100" width="22" height="22" fill="currentColor" className="inline-block" aria-label="SAR">
+                    <path d="M35.1 1.7L46.8 1.7V75.6L1.7 92.4V78.7L35.1 71.9V1.7Z" />
+                    <path d="M58.7 13.6H70.4V75.6H58.7V13.6Z" />
+                    <path d="M5.6 66.9L100 29.3V44.2L5.6 81.8V66.9Z" />
+                    <path d="M61.2 87.9L100 81.1V90.3L61.2 97.1V87.9Z" />
                   </svg>
                 </span>
                 <span className="text-3xl font-black text-gray-900 dark:text-white font-sans">
