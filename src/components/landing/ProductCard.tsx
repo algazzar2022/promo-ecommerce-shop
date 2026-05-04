@@ -58,12 +58,11 @@ export default function ProductCard({ product }: ProductCardProps) {
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-1.5 group/price">
                 <span className="text-brand-600 dark:text-brand-400 group-hover:scale-110 transition-transform duration-300">
-                  <svg viewBox="0 0 100 100" width="22" height="22" fill="currentColor" className="inline-block" aria-label="SAR">
-                    <path d="M35.1 1.7L46.8 1.7V75.6L1.7 92.4V78.7L35.1 71.9V1.7Z" />
-                    <path d="M58.7 13.6H70.4V75.6H58.7V13.6Z" />
-                    <path d="M5.6 66.9L100 29.3V44.2L5.6 81.8V66.9Z" />
-                    <path d="M61.2 87.9L100 81.1V90.3L61.2 97.1V87.9Z" />
-                  </svg>
+                  <img 
+                    src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Saudi_Riyal_Symbol.svg" 
+                    alt="SAR" 
+                    className="w-6 h-6 inline-block dark:invert" 
+                  />
                 </span>
                 <span className="text-3xl font-black text-gray-900 dark:text-white font-sans">
                   {product.price.toLocaleString('en-US')}
