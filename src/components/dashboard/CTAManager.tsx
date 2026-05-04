@@ -65,13 +65,37 @@ export default function CTAManager() {
           <div>
             <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">رقم الواتساب</label>
             <div className="relative">
-              <span className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 font-sans" dir="ltr">+</span>
               <input
                 type="text"
                 dir="ltr"
                 value={settings.whatsappNumber}
                 onChange={(e) => updateSettings({ whatsappNumber: e.target.value })}
-                className="w-full pl-4 pr-8 py-3 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none bg-white dark:bg-gray-800 dark:text-white transition-all text-left font-sans"
+                className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none bg-white dark:bg-gray-800 dark:text-white transition-all text-left font-sans"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="pt-6 border-t border-gray-100 dark:border-gray-800">
+          <h3 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-4">الزر الإضافي (الموقع الكامل)</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">نص الزر الثاني</label>
+              <input
+                type="text"
+                value={cta.secondaryButtonText}
+                onChange={(e) => updateCTA({ secondaryButtonText: e.target.value })}
+                className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none bg-white dark:bg-gray-800 dark:text-white transition-all"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">رابط الزر الثاني</label>
+              <input
+                type="text"
+                dir="ltr"
+                value={cta.secondaryButtonLink}
+                onChange={(e) => updateCTA({ secondaryButtonLink: e.target.value })}
+                className="w-full px-4 py-3 border border-gray-200 dark:border-gray-700 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-transparent outline-none bg-white dark:bg-gray-800 dark:text-white transition-all text-left font-sans"
               />
             </div>
           </div>

@@ -40,6 +40,8 @@ export interface StoreState {
     headline: string;
     subheadline: string;
     buttonText: string;
+    secondaryButtonText: string;
+    secondaryButtonLink: string;
   };
   settings: {
     whatsappNumber: string;
@@ -125,6 +127,8 @@ export const useStore = create<StoreState>()(
         headline: 'جاهز لتجربة راحة لا مثيل لها؟',
         subheadline: 'فريقنا متواجد 24/7 لخدمتكم ومساعدتكم في اختيار الكرسي الأنسب.',
         buttonText: 'تواصل معنا عبر واتساب',
+        secondaryButtonText: 'الدخول إلى موقعنا الكامل',
+        secondaryButtonLink: 'https://mscostore.com',
       },
       settings: {
         whatsappNumber: '+966500000000',
