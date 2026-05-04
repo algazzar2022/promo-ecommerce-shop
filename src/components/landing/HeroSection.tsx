@@ -4,8 +4,21 @@ import { useStore } from "@/store/useStore";
 import { motion } from "framer-motion";
 import { Zap, Shield, Rocket } from "lucide-react";
 
+import { useEffect } from "react";
+
 export default function HeroSection() {
   const { hero, settings } = useStore();
+
+  // Sync state across tabs/iframes when localStorage changes
+  useEffect(() => {
+    const handleStorageChange = (e: StorageEvent) => {
+      if (e.key === 'msco-storage-v2') {
+        window.location.reload();
+      }
+    };
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
+  }, []);
 
   if (!settings.showHero) return null;
 
