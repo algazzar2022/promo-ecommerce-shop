@@ -164,7 +164,7 @@ export const useStore = create<StoreState>()(
       })),
     }),
     {
-      name: 'msco-storage-v2',
+      name: 'msco-storage-v3',
     }
   )
 );
