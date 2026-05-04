@@ -63,6 +63,10 @@ export interface StoreState {
   reorderProducts: (products: Product[]) => void;
   updateCTA: (cta: Partial<StoreState['cta']>) => void;
   updateSettings: (settings: Partial<StoreState['settings']>) => void;
+  
+  // Sync Actions
+  loadFromServer: () => Promise<void>;
+  saveToServer: () => Promise<void>;
 }
 
 const defaultFeatures: Feature[] = [
@@ -101,7 +105,7 @@ const defaultProducts: Product[] = [
 
 export const useStore = create<StoreState>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       hero: {
         headline: 'راحة الحاج تبدأ من هنا',
         subheadline: 'كراسي متحركة كهربائية ويدوية لتسهيل أداء مناسك الحج والعمرة',
@@ -139,32 +143,90 @@ export const useStore = create<StoreState>()(
         showCTA: true,
       },
 
-      updateHero: (data) => set((state) => ({ hero: { ...state.hero, ...data } })),
-      updateCTA: (data) => set((state) => ({ cta: { ...state.cta, ...data } })),
-      updateSettings: (data) => set((state) => ({ settings: { ...state.settings, ...data } })),
-      updateBenefits: (data) => set((state) => ({ benefits: { ...state.benefits, ...data } })),
-      updateBenefit: (id, benefit) => set((state) => ({
-        benefits: {
-          ...state.benefits,
-          items: state.benefits.items.map(i => i.id === id ? { ...i, ...benefit } : i)
+      updateHero: (data) => {
+        set((state) => ({ hero: { ...state.hero, ...data } }));
+        get().saveToServer();
+      },
+      updateCTA: (data) => {
+        set((state) => ({ cta: { ...state.cta, ...data } }));
+        get().saveToServer();
+      },
+      updateSettings: (data) => {
+        set((state) => ({ settings: { ...state.settings, ...data } }));
+        get().saveToServer();
+      },
+      updateBenefits: (data) => {
+        set((state) => ({ benefits: { ...state.benefits, ...data } }));
+        get().saveToServer();
+      },
+      updateBenefit: (id, benefit) => {
+        set((state) => ({
+          benefits: {
+            ...state.benefits,
+            items: state.benefits.items.map(i => i.id === id ? { ...i, ...benefit } : i)
+          }
+        }));
+        get().saveToServer();
+      },
+
+      addProduct: (product) => {
+        set((state) => ({ products: [...state.products, product] }));
+        get().saveToServer();
+      },
+      updateProduct: (id, product) => {
+        set((state) => ({
+          products: state.products.map(p => p.id === id ? { ...p, ...product } : p)
+        }));
+        get().saveToServer();
+      },
+      removeProduct: (id) => {
+        set((state) => ({
+          products: state.products.filter(p => p.id !== id)
+        }));
+        get().saveToServer();
+      },
+      reorderProducts: (products) => {
+        set({ products });
+        get().saveToServer();
+      },
+
+      updateFeature: (id, feature) => {
+        set((state) => ({
+          features: state.features.map(f => f.id === id ? { ...f, ...feature } : f)
+        }));
+        get().saveToServer();
+      },
+
+      loadFromServer: async () => {
+        try {
+          const res = await fetch('/api/store');
+          const data = await res.json();
+          if (data && !data.error && Object.keys(data).length > 0) {
+            set(data);
+          }
+        } catch (error) {
+          console.error('Failed to load from server:', error);
         }
-      })),
+      },
 
-      addProduct: (product) => set((state) => ({ products: [...state.products, product] })),
-      updateProduct: (id, product) => set((state) => ({
-        products: state.products.map(p => p.id === id ? { ...p, ...product } : p)
-      })),
-      removeProduct: (id) => set((state) => ({
-        products: state.products.filter(p => p.id !== id)
-      })),
-      reorderProducts: (products) => set({ products }),
-
-      updateFeature: (id, feature) => set((state) => ({
-        features: state.features.map(f => f.id === id ? { ...f, ...feature } : f)
-      })),
+      saveToServer: async () => {
+        try {
+          const state = get();
+          // Remove functions from the state before saving
+          const dataToSave = Object.fromEntries(
+            Object.entries(state).filter(([_, v]) => typeof v !== 'function')
+          );
+          await fetch('/api/store', {
+            method: 'POST',
+            body: JSON.stringify(dataToSave),
+          });
+        } catch (error) {
+          console.error('Failed to save to server:', error);
+        }
+      },
     }),
     {
-      name: 'msco-storage-v3',
+      name: 'msco-storage-v4', // Incremented version to clear old local storage
     }
   )
 );
