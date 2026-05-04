@@ -107,7 +107,7 @@ export default function HeroSection() {
               className="absolute inset-0 z-10 flex items-center justify-center p-12"
             >
               <img 
-                src="/images/hajj_electric_wheelchair_1777924154589.png" 
+                src={hero.backgroundImage} 
                 alt="Electric Wheelchair" 
                 className="w-full h-full object-contain drop-shadow-[0_30px_60px_rgba(5,115,240,0.4)] z-10 scale-125"
               />
