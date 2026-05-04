@@ -113,30 +113,14 @@ export default function HeroSection() {
               />
             </motion.div>
 
-            {/* Futuristic Data Tags */}
-            <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 1, duration: 0.5 }}
-              className="absolute top-10 -right-12 z-20"
-            >
-              <div className="bg-white/10 dark:bg-black/40 backdrop-blur-xl p-3 rounded-xl border border-white/20 dark:border-white/10 shadow-2xl flex items-center gap-3">
-                <div className="w-2 h-10 bg-brand-500 rounded-full"></div>
-                <div>
-                  <div className="text-[10px] uppercase tracking-widest text-gray-500 font-bold">System Status</div>
-                  <div className="text-sm font-black text-brand-600 dark:text-brand-400">OPTIMIZED</div>
-                </div>
-              </div>
-            </motion.div>
-
             {/* Floating Tech Badges */}
             <motion.div 
               animate={{ y: [0, 15, 0] }}
               transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 1 }}
               className="absolute top-1/2 -right-16 z-20 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md p-4 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-xl"
             >
-              <div className="text-brand-600 font-bold text-lg">24/7</div>
-              <div className="text-xs text-gray-500 dark:text-gray-400">دعم فني متواصل</div>
+              <div className="text-brand-600 font-bold text-lg">{hero.badge1Value}</div>
+              <div className="text-xs text-gray-500 dark:text-gray-400">{hero.badge1Title}</div>
             </motion.div>
 
             <motion.div 
@@ -146,8 +130,8 @@ export default function HeroSection() {
             >
               <div className="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600"><Shield size={20} /></div>
               <div>
-                <div className="font-bold text-sm dark:text-white">ضمان 3 سنوات</div>
-                <div className="text-xs text-gray-500 dark:text-gray-400">شامل المحرك والبطارية</div>
+                <div className="font-bold text-sm dark:text-white">{hero.badge2Title}</div>
+                <div className="text-xs text-gray-500 dark:text-gray-400">{hero.badge2Value}</div>
               </div>
             </motion.div>
           </div>

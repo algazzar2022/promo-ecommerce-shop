@@ -55,8 +55,47 @@ export default function HeroManager() {
           />
         </div>
 
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">البطاقة 1 (العنوان)</label>
+            <input 
+              type="text" 
+              value={formData.badge1Title}
+              onChange={e => setFormData({...formData, badge1Title: e.target.value})}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 outline-none"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">البطاقة 1 (القيمة)</label>
+            <input 
+              type="text" 
+              value={formData.badge1Value}
+              onChange={e => setFormData({...formData, badge1Value: e.target.value})}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 outline-none"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">البطاقة 2 (العنوان)</label>
+            <input 
+              type="text" 
+              value={formData.badge2Title}
+              onChange={e => setFormData({...formData, badge2Title: e.target.value})}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 outline-none"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">البطاقة 2 (القيمة)</label>
+            <input 
+              type="text" 
+              value={formData.badge2Value}
+              onChange={e => setFormData({...formData, badge2Value: e.target.value})}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 outline-none"
+            />
+          </div>
+        </div>
+
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">صورة الخلفية</label>
+          <label className="block text-sm font-medium text-gray-700 mb-2">صورة المنتج الرئيسية</label>
           
           <div className="relative h-48 w-full rounded-xl border-2 border-dashed border-gray-300 overflow-hidden group bg-gray-50 flex flex-col items-center justify-center">
             {formData.backgroundImage ? (

@@ -44,63 +44,52 @@ export default function FeaturesSection() {
           ></motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {features.map((feature, index) => {
-            // @ts-expect-error Dynamic icon access
-            const Icon = LucideIcons[feature.iconName] || LucideIcons.CheckCircle;
-            
-            // Bento logic: Make specific items stand out
-            const isFeatured = index === 0;
-            
-            return (
-              <motion.div 
-                key={feature.id} 
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -10 }}
-                className={`group relative overflow-hidden rounded-[2.5rem] p-1 ${isFeatured ? 'md:col-span-2' : 'md:col-span-1'}`}
-              >
-                {/* Border Gradient Animation */}
-                <div className="absolute inset-0 bg-gradient-to-br from-brand-500/20 via-transparent to-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                
-                <div className="relative h-full bg-white dark:bg-gray-900/40 backdrop-blur-xl rounded-[2.4rem] p-10 border border-gray-100 dark:border-gray-800/50 flex flex-col transition-all duration-500 group-hover:shadow-[0_20px_50px_rgba(5,115,240,0.1)]">
-                  
-                  {/* Decorative Icon in Background */}
-                  <div className="absolute -right-4 -top-4 opacity-[0.03] dark:opacity-[0.05] group-hover:opacity-[0.08] transition-opacity duration-500 pointer-events-none">
-                    <Icon size={180} strokeWidth={1} />
-                  </div>
+        <div className="relative max-w-5xl mx-auto">
+          {/* Central Connecting Line */}
+          <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-gradient-to-b from-brand-500/0 via-brand-500/50 to-brand-500/0 hidden md:block"></div>
 
-                  <div className="flex items-start justify-between mb-8">
-                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-brand-50 to-brand-100 dark:from-brand-900/40 dark:to-brand-800/20 text-brand-600 dark:text-brand-400 flex items-center justify-center border border-brand-200/50 dark:border-brand-700/30 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500 shadow-sm">
-                      <Icon size={32} strokeWidth={2.5} />
-                    </div>
-                    <div className="text-4xl font-black text-gray-100 dark:text-gray-800/50 group-hover:text-brand-500/20 transition-colors duration-500">
-                      0{index + 1}
-                    </div>
-                  </div>
-                  
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-black text-gray-900 dark:text-white mb-4 group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors duration-300">
-                      {feature.title}
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-lg font-medium">
-                      {feature.description}
-                    </p>
-                  </div>
-                  
-                  <div className="mt-8 flex items-center gap-2 text-brand-600 dark:text-brand-400 font-bold text-sm opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0 transition-all duration-300">
-                    <span>اكتشف المزيد</span>
-                    <LucideIcons.ArrowLeft size={16} />
-                  </div>
+          <div className="space-y-12 md:space-y-0">
+            {features.map((feature, index) => {
+              // @ts-expect-error Dynamic icon access
+              const Icon = LucideIcons[feature.iconName] || LucideIcons.CheckCircle;
+              const isEven = index % 2 === 0;
+              
+              return (
+                <div key={feature.id} className="relative md:py-16">
+                  {/* Central Node Dot */}
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-brand-600 border-4 border-white dark:border-[#020817] shadow-[0_0_15px_rgba(5,115,240,0.5)] z-20 hidden md:block"></div>
 
-                  {/* Tech Lines Overlay */}
-                  <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className={`flex flex-col md:flex-row items-center gap-8 md:gap-24 ${isEven ? 'md:flex-row-reverse' : ''}`}>
+                    {/* Content Side */}
+                    <motion.div 
+                      initial={{ opacity: 0, x: isEven ? -50 : 50 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true, margin: "-100px" }}
+                      transition={{ duration: 0.7 }}
+                      className="flex-1 w-full"
+                    >
+                      <div className={`p-8 md:p-12 rounded-[3rem] bg-white dark:bg-gray-900/40 backdrop-blur-xl border border-gray-100 dark:border-gray-800/50 shadow-xl relative group hover:border-brand-500/30 transition-colors duration-500 ${isEven ? 'text-right' : 'text-right md:text-left'}`}>
+                        <div className={`w-20 h-20 rounded-3xl bg-brand-50 dark:bg-brand-900/30 text-brand-600 dark:text-brand-400 flex items-center justify-center mb-8 border border-brand-100 dark:border-brand-800/50 group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500 mx-auto ${isEven ? 'md:ml-0 md:mr-auto' : 'md:mr-0 md:ml-auto'}`}>
+                          <Icon size={36} strokeWidth={2} />
+                        </div>
+                        
+                        <h3 className="text-3xl font-black text-gray-900 dark:text-white mb-4 tracking-tight">{feature.title}</h3>
+                        <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed font-medium">
+                          {feature.description}
+                        </p>
+
+                        {/* Hover Decoration */}
+                        <div className="absolute -inset-1 bg-gradient-to-br from-brand-500/10 to-cyan-500/10 rounded-[3rem] -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      </div>
+                    </motion.div>
+
+                    {/* Empty Side (Space for layout) */}
+                    <div className="flex-1 hidden md:block"></div>
+                  </div>
                 </div>
-              </motion.div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>

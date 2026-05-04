@@ -24,6 +24,10 @@ export interface StoreState {
     headline: string;
     subheadline: string;
     backgroundImage: string;
+    badge1Title: string;
+    badge1Value: string;
+    badge2Title: string;
+    badge2Value: string;
   };
   products: Product[];
   features: Feature[];
@@ -92,7 +96,11 @@ export const useStore = create<StoreState>()(
       hero: {
         headline: 'راحة الحاج تبدأ من هنا',
         subheadline: 'كراسي متحركة كهربائية ويدوية لتسهيل أداء مناسك الحج والعمرة',
-        backgroundImage: '/images/hajj_hero_bg_1777924194804.png'
+        backgroundImage: '/images/hajj_hero_bg_1777924194804.png',
+        badge1Title: 'دعم فني متواصل',
+        badge1Value: '24/7',
+        badge2Title: 'ضمان 3 سنوات',
+        badge2Value: 'شامل المحرك والبطارية'
       },
       products: defaultProducts,
       features: defaultFeatures,
