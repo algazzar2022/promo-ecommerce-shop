@@ -70,7 +70,7 @@ export default function HeroSection() {
           </motion.div>
         </div>
 
-        {/* Left Content - Floating Tech Image */}
+        {/* Left Content - Geometric Tech Image Container */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -78,39 +78,71 @@ export default function HeroSection() {
           className="flex-1 w-full relative"
         >
           <div className="relative w-full aspect-square max-w-lg mx-auto">
-            {/* Holographic glowing backplate */}
-            <div className="absolute inset-4 rounded-full bg-gradient-to-tr from-brand-600 to-cyan-400 blur-2xl opacity-20 dark:opacity-40 animate-pulse"></div>
+            {/* Geometric Background Shape (Hexagon/Diamond) */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-brand-600/20 to-cyan-400/20 dark:from-brand-600/40 dark:to-cyan-400/40 blur-3xl opacity-50 animate-pulse"></div>
             
-            {/* Tech UI Rings */}
-            <div className="absolute inset-0 rounded-full border border-brand-200 dark:border-brand-800/50 animate-[spin_60s_linear_infinite]"></div>
-            <div className="absolute inset-8 rounded-full border border-dashed border-brand-300 dark:border-brand-700/50 animate-[spin_40s_linear_infinite_reverse]"></div>
+            {/* The Geometric Frame */}
+            <div className="absolute inset-0 bg-white/5 dark:bg-white/5 backdrop-blur-3xl border border-white/10 dark:border-white/5 shadow-2xl" 
+                 style={{ clipPath: "polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%)" }}>
+              {/* Inner Decorative Grid */}
+              <div className="absolute inset-0 bg-tech-grid-dark opacity-10"></div>
+            </div>
+
+            {/* Rotating Tech Rings (Nested & Different Directions) */}
+            <div className="absolute inset-4 rounded-full border-2 border-brand-500/20 dark:border-brand-500/30 animate-[spin_30s_linear_infinite]"></div>
+            <div className="absolute inset-12 rounded-full border border-dashed border-cyan-500/30 animate-[spin_20s_linear_infinite_reverse]"></div>
+            
+            {/* Floating Orbitals */}
+            <motion.div 
+              animate={{ rotate: 360 }}
+              transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+              className="absolute inset-0"
+            >
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-4 h-4 bg-brand-500 rounded-full shadow-[0_0_15px_rgba(5,115,240,0.8)]"></div>
+            </motion.div>
 
             <motion.div
-              animate={{ y: [0, -20, 0] }}
-              transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-              className="absolute inset-0 z-10 flex items-center justify-center"
+              animate={{ y: [0, -25, 0], rotate: [0, 2, 0] }}
+              transition={{ repeat: Infinity, duration: 7, ease: "easeInOut" }}
+              className="absolute inset-0 z-10 flex items-center justify-center p-12"
             >
               <img 
                 src="/images/hajj_electric_wheelchair_1777924154589.png" 
                 alt="Electric Wheelchair" 
-                className="w-[120%] h-[120%] object-contain drop-shadow-[0_20px_50px_rgba(5,115,240,0.3)] z-10 scale-110"
+                className="w-full h-full object-contain drop-shadow-[0_30px_60px_rgba(5,115,240,0.4)] z-10 scale-125"
               />
+            </motion.div>
+
+            {/* Futuristic Data Tags */}
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 1, duration: 0.5 }}
+              className="absolute top-10 -right-12 z-20"
+            >
+              <div className="bg-white/10 dark:bg-black/40 backdrop-blur-xl p-3 rounded-xl border border-white/20 dark:border-white/10 shadow-2xl flex items-center gap-3">
+                <div className="w-2 h-10 bg-brand-500 rounded-full"></div>
+                <div>
+                  <div className="text-[10px] uppercase tracking-widest text-gray-500 font-bold">System Status</div>
+                  <div className="text-sm font-black text-brand-600 dark:text-brand-400">OPTIMIZED</div>
+                </div>
+              </div>
             </motion.div>
 
             {/* Floating Tech Badges */}
             <motion.div 
-              animate={{ y: [0, 10, 0] }}
-              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut", delay: 1 }}
-              className="absolute top-1/4 -right-8 z-20 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md p-4 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-xl"
+              animate={{ y: [0, 15, 0] }}
+              transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 1 }}
+              className="absolute top-1/2 -right-16 z-20 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md p-4 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-xl"
             >
               <div className="text-brand-600 font-bold text-lg">24/7</div>
               <div className="text-xs text-gray-500 dark:text-gray-400">دعم فني متواصل</div>
             </motion.div>
 
             <motion.div 
-              animate={{ y: [0, -10, 0] }}
-              transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 2 }}
-              className="absolute bottom-1/4 -left-8 z-20 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md p-4 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-xl flex items-center gap-3"
+              animate={{ y: [0, -15, 0] }}
+              transition={{ repeat: Infinity, duration: 6, ease: "easeInOut", delay: 2 }}
+              className="absolute bottom-1/4 -left-12 z-20 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md p-4 rounded-2xl border border-gray-200 dark:border-gray-800 shadow-xl flex items-center gap-3"
             >
               <div className="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center text-green-600"><Shield size={20} /></div>
               <div>
