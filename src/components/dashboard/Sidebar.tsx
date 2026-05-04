@@ -2,7 +2,7 @@
 
 import { LayoutDashboard, ShoppingBag, Type, Star, Settings, Megaphone, Eye } from "lucide-react";
 
-export type TabType = 'overview' | 'hero' | 'products' | 'features' | 'cta' | 'settings';
+export type TabType = 'overview' | 'hero' | 'products' | 'features' | 'benefits' | 'cta' | 'settings';
 
 interface SidebarProps {
   activeTab: TabType;
@@ -15,6 +15,7 @@ export default function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
     { id: 'hero', label: 'القسم الرئيسي', icon: Type },
     { id: 'products', label: 'المنتجات', icon: ShoppingBag },
     { id: 'features', label: 'المميزات', icon: Star },
+    { id: 'benefits', label: 'أداء المناسك', icon: Zap },
     { id: 'cta', label: 'دعوة لاتخاذ إجراء', icon: Megaphone },
     { id: 'settings', label: 'الإعدادات', icon: Settings },
   ] as const;

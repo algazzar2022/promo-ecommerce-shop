@@ -31,6 +31,11 @@ export interface StoreState {
   };
   products: Product[];
   features: Feature[];
+  benefits: {
+    headline: string;
+    description: string;
+    items: { id: string; title: string; description: string }[];
+  };
   cta: {
     headline: string;
     subheadline: string;
@@ -48,6 +53,8 @@ export interface StoreState {
   // Actions
   updateHero: (hero: Partial<StoreState['hero']>) => void;
   updateFeature: (id: string, feature: Partial<Feature>) => void;
+  updateBenefits: (benefits: Partial<StoreState['benefits']>) => void;
+  updateBenefit: (id: string, benefit: Partial<{ title: string; description: string }>) => void;
   addProduct: (product: Product) => void;
   updateProduct: (id: string, product: Partial<Product>) => void;
   removeProduct: (id: string) => void;
@@ -104,6 +111,16 @@ export const useStore = create<StoreState>()(
       },
       products: defaultProducts,
       features: defaultFeatures,
+      benefits: {
+        headline: 'مصممة خصيصاً لمناسك الحج',
+        description: 'تقنيات متقدمة تجعل أداء المناسك أسهل وأكثر أماناً. كل خطوة وكل ركن من أركان الحج أصبح في متناول الجميع بفضل الهندسة الذكية.',
+        items: [
+          { id: '1', title: 'الطواف', description: 'كراسي مريحة تتحمل الازدحام وتوفر سهولة في الحركة داخل الحرم المكي، مزودة بحساسات أمان لتفادي الاصطدام.' },
+          { id: '2', title: 'السعي', description: 'بطاريات ليثيوم تدوم طويلاً لضمان أداء السعي بين الصفا والمروة بدون انقطاع، مع مؤشر ذكي للشحن.' },
+          { id: '3', title: 'منى', description: 'تصميم هندسي قابل للطي في 3 ثوانٍ يسهل نقله وتخزينه في الخيام والمساحات الضيقة جداً.' },
+          { id: '4', title: 'عرفات', description: 'نظام تعليق هيدروليكي وعجلات قوية تتحمل مختلف التضاريس لضمان راحة فائقة الحاج يوم عرفة.' },
+        ]
+      },
       cta: {
         headline: 'جاهز لتجربة راحة لا مثيل لها؟',
         subheadline: 'فريقنا متواجد 24/7 لخدمتكم ومساعدتكم في اختيار الكرسي الأنسب.',
@@ -121,6 +138,13 @@ export const useStore = create<StoreState>()(
       updateHero: (data) => set((state) => ({ hero: { ...state.hero, ...data } })),
       updateCTA: (data) => set((state) => ({ cta: { ...state.cta, ...data } })),
       updateSettings: (data) => set((state) => ({ settings: { ...state.settings, ...data } })),
+      updateBenefits: (data) => set((state) => ({ benefits: { ...state.benefits, ...data } })),
+      updateBenefit: (id, benefit) => set((state) => ({
+        benefits: {
+          ...state.benefits,
+          items: state.benefits.items.map(i => i.id === id ? { ...i, ...benefit } : i)
+        }
+      })),
 
       addProduct: (product) => set((state) => ({ products: [...state.products, product] })),
       updateProduct: (id, product) => set((state) => ({

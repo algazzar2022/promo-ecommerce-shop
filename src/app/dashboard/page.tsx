@@ -8,6 +8,7 @@ import HeroManager from "@/components/dashboard/HeroManager";
 import FeaturesManager from "@/components/dashboard/FeaturesManager";
 import CTAManager from "@/components/dashboard/CTAManager";
 import SettingsManager from "@/components/dashboard/SettingsManager";
+import BenefitsManager from "@/components/dashboard/BenefitsManager";
 import { useStore } from "@/store/useStore";
 
 export default function Dashboard() {
@@ -46,6 +47,8 @@ export default function Dashboard() {
         return <CTAManager />;
       case 'settings':
         return <SettingsManager />;
+      case 'benefits':
+        return <BenefitsManager />;
       default:
         return null;
     }
