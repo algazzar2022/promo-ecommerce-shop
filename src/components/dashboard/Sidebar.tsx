@@ -1,6 +1,6 @@
 "use client";
 
-import { LayoutDashboard, ShoppingBag, Type, Star, Settings, Megaphone, Eye } from "lucide-react";
+import { LayoutDashboard, ShoppingBag, Type, Star, Settings, Megaphone, Eye, Zap } from "lucide-react";
 
 export type TabType = 'overview' | 'hero' | 'products' | 'features' | 'benefits' | 'cta' | 'settings';
 
