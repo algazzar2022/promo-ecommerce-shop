@@ -58,12 +58,11 @@ export default function ProductCard({ product }: ProductCardProps) {
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-1.5 group/price">
                 <span className="text-brand-600 dark:text-brand-400 group-hover:scale-110 transition-transform duration-300">
-                  <svg viewBox="0 0 100 100" width="22" height="22" fill="currentColor" className="inline-block" aria-label="SAR">
-                    <path d="M14 81.3V70.1L22.5 66.5V13H36.4V72.4L14 81.3Z" />
-                    <path d="M55.5 24.6H69.5V72.4H55.5V24.6Z" />
-                    <path d="M0 63.3L100 24V37.5L0 76.8V63.3Z" />
-                    <path d="M58 84L100 77.4V86.4L58 93V84Z" />
-                  </svg>
+                  <img 
+                    src="https://mscostore.com/wp-content/uploads/2025/03/Saudi_Riyal_Symbol-1.png" 
+                    alt="SAR" 
+                    className="w-6 h-6 inline-block dark:invert" 
+                  />
                 </span>
                 <span className="text-3xl font-black text-gray-900 dark:text-white font-sans">
                   {product.price.toLocaleString('en-US')}
