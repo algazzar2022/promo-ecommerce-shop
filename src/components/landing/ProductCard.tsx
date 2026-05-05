@@ -24,14 +24,15 @@ export default function ProductCard({ product }: ProductCardProps) {
       <div className="absolute inset-0 bg-gradient-to-b from-brand-500/0 to-brand-500/0 group-hover:from-brand-500/20 group-hover:to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
       
       <div className="relative z-10 flex flex-col h-full">
-        <div className="relative h-64 overflow-hidden p-6 bg-gray-50/50 dark:bg-gray-800/50 rounded-t-[2rem]">
-          <div className="absolute inset-0 bg-gradient-to-t from-gray-100 dark:from-gray-900 to-transparent z-10 opacity-60"></div>
+        <div className="relative h-64 overflow-hidden bg-gray-100 dark:bg-gray-800">
           <img 
             src={product.imageUrl} 
             alt={product.name} 
-            className="w-full h-full object-contain mix-blend-multiply dark:mix-blend-normal rounded-2xl transition-transform duration-700 group-hover:scale-110 z-0 relative"
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
           />
-          <div className="absolute top-6 right-6 z-20">
+          {/* Subtle gradient overlay at bottom */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
+          <div className="absolute top-4 right-4 z-20">
             <span className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-md px-4 py-1.5 text-sm font-bold rounded-full text-brand-600 dark:text-brand-400 shadow-lg border border-brand-100 dark:border-brand-800/50">
               {product.type === 'electric' ? 'كهربائي' : 'يدوي'}
             </span>
