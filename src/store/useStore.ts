@@ -10,6 +10,8 @@ export interface Product {
   imageUrl: string;
   type: ProductType;
   externalLink?: string;
+  spec1?: string;
+  spec2?: string;
 }
 
 export interface Feature {
@@ -83,7 +85,9 @@ const defaultProducts: Product[] = [
     price: 3500,
     imageUrl: '/images/hajj_electric_wheelchair_1777924154589.png',
     type: 'electric',
-    externalLink: 'https://wa.me/966500000000'
+    externalLink: 'https://wa.me/966500000000',
+    spec1: '24 كم',
+    spec2: 'وزن خفيف',
   },
   {
     id: '2',
@@ -91,7 +95,9 @@ const defaultProducts: Product[] = [
     price: 850,
     imageUrl: '/images/hajj_manual_wheelchair_1777924173772.png',
     type: 'manual',
-    externalLink: 'https://wa.me/966500000000'
+    externalLink: 'https://wa.me/966500000000',
+    spec1: 'قابل للطي',
+    spec2: 'وزن خفيف',
   },
   {
     id: '3',
@@ -99,7 +105,9 @@ const defaultProducts: Product[] = [
     price: 4200,
     imageUrl: '/images/hajj_electric_wheelchair_1777924154589.png',
     type: 'electric',
-    externalLink: 'https://wa.me/966500000000'
+    externalLink: 'https://wa.me/966500000000',
+    spec1: '35 كم',
+    spec2: 'طرق وعرة',
   }
 ];
 

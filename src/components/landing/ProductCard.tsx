@@ -44,15 +44,21 @@ export default function ProductCard({ product }: ProductCardProps) {
           
           {/* Tech Specs */}
           <div className="flex items-center gap-4 mb-6 text-xs text-gray-500 dark:text-gray-400 font-medium">
-            <div className="flex items-center gap-1.5">
-              <Battery size={14} className="text-brand-500" />
-              <span>{product.type === 'electric' ? '24 كم' : 'يدوي'}</span>
-            </div>
-            <div className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-700"></div>
-            <div className="flex items-center gap-1.5">
-              <Activity size={14} className="text-brand-500" />
-              <span>وزن خفيف</span>
-            </div>
+            {product.spec1 && (
+              <div className="flex items-center gap-1.5">
+                <Battery size={14} className="text-brand-500" />
+                <span>{product.spec1}</span>
+              </div>
+            )}
+            {product.spec1 && product.spec2 && (
+              <div className="w-1 h-1 rounded-full bg-gray-300 dark:bg-gray-700"></div>
+            )}
+            {product.spec2 && (
+              <div className="flex items-center gap-1.5">
+                <Activity size={14} className="text-brand-500" />
+                <span>{product.spec2}</span>
+              </div>
+            )}
           </div>
 
           <div className="flex flex-col gap-6 mt-auto">
@@ -77,7 +83,7 @@ export default function ProductCard({ product }: ProductCardProps) {
               target="_blank"
               className="w-full relative overflow-hidden bg-brand-600 text-white font-bold py-4 px-6 rounded-2xl transition-all duration-300 flex items-center justify-center gap-3 shadow-lg shadow-brand-500/20 hover:bg-brand-700 hover:shadow-brand-500/40 hover:-translate-y-1"
             >
-              <span className="text-sm">اطلب عبر واتساب</span>
+              <span className="text-sm">استكشف التفاصيل</span>
               <ShoppingCart size={18} />
             </a>
           </div>

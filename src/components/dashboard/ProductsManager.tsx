@@ -204,6 +204,29 @@ export default function ProductsManager() {
             <p className="text-xs text-gray-500 mt-1">الرابط الذي سيتم توجيه العميل إليه عند الضغط على استكشف التفاصيل</p>
           </div>
 
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">المواصفة الأولى</label>
+              <input 
+                type="text" 
+                value={formData.spec1 || ''}
+                onChange={e => setFormData({...formData, spec1: e.target.value})}
+                placeholder="مثال: 24 كم"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">المواصفة الثانية</label>
+              <input 
+                type="text" 
+                value={formData.spec2 || ''}
+                onChange={e => setFormData({...formData, spec2: e.target.value})}
+                placeholder="مثال: وزن خفيف"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none"
+              />
+            </div>
+          </div>
+
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">صورة المنتج</label>
             <div className="flex items-center gap-4">
