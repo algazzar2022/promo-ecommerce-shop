@@ -71,6 +71,7 @@ export default function ProductsManager() {
   
   const [isEditing, setIsEditing] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
+  const [priceInput, setPriceInput] = useState('');
   const [formData, setFormData] = useState<Partial<Product>>({
     name: '',
     price: 0,
@@ -108,30 +109,35 @@ export default function ProductsManager() {
   };
 
   const handleSave = () => {
-    if (!formData.name || !formData.price || !formData.imageUrl) return alert('الرجاء تعبئة جميع الحقول');
+    const priceValue = Number(priceInput);
+    const finalData = { ...formData, price: priceValue };
+    if (!finalData.name || !priceValue || !finalData.imageUrl) return alert('الرجاء تعبئة جميع الحقول');
     
     if (editingId) {
-      updateProduct(editingId, formData);
+      updateProduct(editingId, finalData);
     } else {
       addProduct({
-        ...formData,
+        ...finalData,
         id: Math.random().toString(36).substr(2, 9),
       } as Product);
     }
     
     setIsEditing(false);
     setEditingId(null);
+    setPriceInput('');
     setFormData({ name: '', price: 0, imageUrl: '', type: 'electric', externalLink: '' });
   };
 
   const startEdit = (product: Product) => {
     setFormData(product);
+    setPriceInput(product.price.toString());
     setEditingId(product.id);
     setIsEditing(true);
   };
 
   const startAdd = () => {
     setFormData({ name: '', price: 0, imageUrl: '', type: 'electric', externalLink: '' });
+    setPriceInput('');
     setEditingId(null);
     setIsEditing(true);
   };
@@ -161,9 +167,14 @@ export default function ProductsManager() {
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">السعر (ر.س)</label>
               <input 
-                type="number" 
-                value={formData.price}
-                onChange={e => setFormData({...formData, price: Number(e.target.value)})}
+                type="text"
+                inputMode="numeric"
+                value={priceInput}
+                onChange={e => {
+                  const val = e.target.value.replace(/[^0-9]/g, '');
+                  setPriceInput(val);
+                }}
+                placeholder="مثال: 3500"
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-transparent outline-none"
               />
             </div>
