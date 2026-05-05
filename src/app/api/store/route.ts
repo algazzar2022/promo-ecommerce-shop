@@ -5,7 +5,7 @@ export const dynamic = 'force-dynamic';
 
 const supabase = createClient(
   process.env.SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  process.env.SUPABASE_SECRET_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 );
 
 export async function GET() {
@@ -24,9 +24,10 @@ export async function GET() {
     }
     
     return NextResponse.json(data?.value || {});
-  } catch (error: any) {
-    console.error('Supabase Load Error:', error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+  } catch (error: unknown) {
+    const msg = error instanceof Error ? error.message : 'Unknown error';
+    console.error('Supabase Load Error:', msg);
+    return NextResponse.json({ error: msg }, { status: 500 });
   }
 }
 
@@ -45,8 +46,9 @@ export async function POST(request: Request) {
     if (error) throw error;
     
     return NextResponse.json({ success: true });
-  } catch (error: any) {
-    console.error('Supabase Save Error:', error);
-    return NextResponse.json({ error: error.message }, { status: 500 });
+  } catch (error: unknown) {
+    const msg = error instanceof Error ? error.message : 'Unknown error';
+    console.error('Supabase Save Error:', msg);
+    return NextResponse.json({ error: msg }, { status: 500 });
   }
 }

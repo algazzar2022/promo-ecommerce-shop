@@ -231,7 +231,7 @@ export const useStore = create<StoreState>()(
           const state = get();
           // Remove functions from the state before saving
           const dataToSave = Object.fromEntries(
-            Object.entries(state).filter(([_, v]) => typeof v !== 'function')
+            Object.entries(state).filter(([, v]) => typeof v !== 'function')
           );
           await fetch('/api/store', {
             method: 'POST',
