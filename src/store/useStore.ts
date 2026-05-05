@@ -199,13 +199,30 @@ export const useStore = create<StoreState>()(
 
       loadFromServer: async () => {
         try {
+          console.log('Fetching state from Supabase...');
           const res = await fetch('/api/store');
           const data = await res.json();
+          
           if (data && !data.error && Object.keys(data).length > 0) {
-            set(data);
+            console.log('State received from server:', data);
+            // Deep merge or complete override
+            set((state) => ({
+              ...state,
+              ...data,
+              // Ensure we don't accidentally overwrite actions
+              hero: { ...state.hero, ...(data.hero || {}) },
+              cta: { ...state.cta, ...(data.cta || {}) },
+              settings: { ...state.settings, ...(data.settings || {}) },
+              benefits: { ...state.benefits, ...(data.benefits || {}) },
+              products: data.products || state.products,
+              features: data.features || state.features,
+            }));
+            console.log('Store hydrated successfully from Supabase.');
+          } else {
+            console.log('No data found on server or empty response.');
           }
         } catch (error) {
-          console.error('Failed to load from server:', error);
+          console.error('CRITICAL: Failed to load from Supabase:', error);
         }
       },
 
