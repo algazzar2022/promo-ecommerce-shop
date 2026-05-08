@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Cairo } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import StoreInitializer from "@/components/StoreInitializer";
-import Navbar from "@/components/landing/Navbar";
 import "./globals.css";
 
 const cairo = Cairo({ subsets: ["latin", "arabic"] });
@@ -33,7 +32,6 @@ export default function RootLayout({
       <body className={`${cairo.className} antialiased bg-gray-50 dark:bg-[#020817] text-gray-900 dark:text-gray-100 transition-colors duration-300`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <StoreInitializer />
-          <Navbar />
           {children}
         </ThemeProvider>
       </body>
