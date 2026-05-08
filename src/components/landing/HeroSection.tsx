@@ -39,7 +39,7 @@ export default function HeroSection() {
           className="flex flex-col items-center"
         >
           {/* Logo image — transparent background, drop shadow only */}
-          <div className="relative w-36 h-24 md:w-56 md:h-36 drop-shadow-[0_8px_30px_rgba(5,115,240,0.25)]">
+          <div className="relative w-60 h-40 md:w-96 md:h-60 drop-shadow-[0_8px_30px_rgba(5,115,240,0.25)]">
             <img
               src="https://mscostore.com/wp-content/uploads/2025/01/cropped-Medical-Sources-Company-LOGO-0%D9%A1-6.png"
               alt="MSCO - مصادر الطب"
