@@ -21,8 +21,8 @@ export default function BenefitsManager() {
   return (
     <div className="max-w-4xl">
       <div className="mb-8">
-        <h2 className="text-2xl font-bold text-gray-900">قسم أداء استثنائي (مناسك الحج)</h2>
-        <p className="text-gray-500 text-sm mt-1">تعديل النصوص والعناوين الخاصة بقسم مميزات الحج</p>
+        <h2 className="text-2xl font-bold text-gray-900">قسم أداء استثنائي (المميزات)</h2>
+        <p className="text-gray-500 text-sm mt-1">تعديل النصوص والعناوين الخاصة بقسم المميزات</p>
       </div>
 
       <div className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm space-y-6 mb-8">
@@ -61,11 +61,11 @@ export default function BenefitsManager() {
         {benefits.items.map((item) => (
           <div key={item.id} className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm">
             <div className="flex items-center justify-between mb-4">
-              <span className="text-xs font-bold text-brand-600 bg-brand-50 px-2 py-1 rounded-md uppercase tracking-wider">المنسك {item.id}</span>
+              <span className="text-xs font-bold text-brand-600 bg-brand-50 px-2 py-1 rounded-md uppercase tracking-wider">الميزة {item.id}</span>
             </div>
             <div className="space-y-4">
               <div>
-                <label className="block text-xs font-medium text-gray-500 mb-1">اسم المنسك</label>
+                <label className="block text-xs font-medium text-gray-500 mb-1">اسم الميزة</label>
                 <input 
                   type="text" 
                   value={item.title}

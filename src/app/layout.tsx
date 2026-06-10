@@ -8,7 +8,7 @@ const cairo = Cairo({ subsets: ["latin", "arabic"] });
 
 export const metadata: Metadata = {
   title: "MSCO | مصادر الطب",
-  description: "كراسي متحركة كهربائية ويدوية لتسهيل أداء مناسك الحج والعمرة",
+  description: "كراسي متحركة كهربائية ويدوية بأعلى جودة لتسهيل حياتك اليومية",
   icons: {
     icon: [
       { url: "/msco-logo.png", type: "image/png" },

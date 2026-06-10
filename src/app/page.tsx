@@ -1,7 +1,7 @@
 import HeroSection from "@/components/landing/HeroSection";
 import FeaturesSection from "@/components/landing/FeaturesSection";
 import ProductGrid from "@/components/landing/ProductGrid";
-import HajjBenefits from "@/components/landing/HajjBenefits";
+import PromoBenefits from "@/components/landing/PromoBenefits";
 import CTASection from "@/components/landing/CTASection";
 import HydrateStore from "@/components/HydrateStore";
 import { createClient } from "@supabase/supabase-js";
@@ -34,7 +34,7 @@ export default async function Home() {
       <HeroSection />
       <FeaturesSection />
       <ProductGrid />
-      <HajjBenefits />
+      <PromoBenefits />
       <CTASection />
     </main>
   );

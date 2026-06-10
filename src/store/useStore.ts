@@ -50,7 +50,7 @@ export interface StoreState {
     showHero: boolean;
     showFeatures: boolean;
     showProducts: boolean;
-    showHajjBenefits: boolean;
+    showPromoBenefits: boolean;
     showCTA: boolean;
   };
 
@@ -72,7 +72,7 @@ export interface StoreState {
 }
 
 const defaultFeatures: Feature[] = [
-  { id: '1', title: 'بطارية طويلة الأمد', description: 'تكفي لأداء مناسك الحج كاملة دون الحاجة للشحن المتكرر', iconName: 'Battery' },
+  { id: '1', title: 'بطارية طويلة الأمد', description: 'تكفي للاستخدام اليومي لفترات طويلة دون الحاجة للشحن المتكرر', iconName: 'Battery' },
   { id: '2', title: 'سهل الطي والنقل', description: 'تصميم خفيف الوزن يمكن طيه ووضعه في صندوق السيارة بسهولة', iconName: 'Move' },
   { id: '3', title: 'مناسب للسفر', description: 'معتمد من شركات الطيران ويمكن حمله في الطائرة', iconName: 'Plane' },
   { id: '4', title: 'تصميم مريح', description: 'مقاعد طبية مريحة لتخفيف الضغط أثناء الجلوس لفترات طويلة', iconName: 'Activity' },
@@ -83,7 +83,7 @@ const defaultProducts: Product[] = [
     id: '1',
     name: 'كرسي متحرك كهربائي خفيف الوزن',
     price: 3500,
-    imageUrl: '/images/hajj_electric_wheelchair_1777924154589.png',
+    imageUrl: '/images/promo_electric_wheelchair.png',
     type: 'electric',
     externalLink: 'https://wa.me/966500000000',
     spec1: '24 كم',
@@ -93,7 +93,7 @@ const defaultProducts: Product[] = [
     id: '2',
     name: 'كرسي متحرك يدوي قابل للطي',
     price: 850,
-    imageUrl: '/images/hajj_manual_wheelchair_1777924173772.png',
+    imageUrl: '/images/promo_manual_wheelchair.png',
     type: 'manual',
     externalLink: 'https://wa.me/966500000000',
     spec1: 'قابل للطي',
@@ -103,7 +103,7 @@ const defaultProducts: Product[] = [
     id: '3',
     name: 'كرسي كهربائي للطرق الوعرة (مطور)',
     price: 4200,
-    imageUrl: '/images/hajj_electric_wheelchair_1777924154589.png',
+    imageUrl: '/images/promo_electric_wheelchair.png',
     type: 'electric',
     externalLink: 'https://wa.me/966500000000',
     spec1: '35 كم',
@@ -115,9 +115,9 @@ export const useStore = create<StoreState>()(
   persist(
     (set, get) => ({
       hero: {
-        headline: 'راحة الحاج تبدأ من هنا',
-        subheadline: 'كراسي متحركة كهربائية ويدوية لتسهيل أداء مناسك الحج والعمرة',
-        backgroundImage: '/images/hajj_hero_bg_1777924194804.png',
+        headline: 'راحتك تبدأ من هنا',
+        subheadline: 'كراسي متحركة كهربائية ويدوية بأعلى جودة لراحتك',
+        backgroundImage: '/images/promo_hero_bg.png',
         badge1Title: 'دعم فني متواصل',
         badge1Value: '24/7',
         badge2Title: 'ضمان 3 سنوات',
@@ -126,13 +126,13 @@ export const useStore = create<StoreState>()(
       products: defaultProducts,
       features: defaultFeatures,
       benefits: {
-        headline: 'مصممة خصيصاً لمناسك الحج',
-        description: 'تقنيات متقدمة تجعل أداء المناسك أسهل وأكثر أماناً. كل خطوة وكل ركن من أركان الحج أصبح في متناول الجميع بفضل الهندسة الذكية.',
+        headline: 'مصممة خصيصاً لراحتك اليومية',
+        description: 'تقنيات متقدمة تجعل التنقل أسهل وأكثر أماناً. كل مشوار أصبح في متناول الجميع بفضل الهندسة الذكية.',
         items: [
-          { id: '1', title: 'الطواف', description: 'كراسي مريحة تتحمل الازدحام وتوفر سهولة في الحركة داخل الحرم المكي، مزودة بحساسات أمان لتفادي الاصطدام.' },
-          { id: '2', title: 'السعي', description: 'بطاريات ليثيوم تدوم طويلاً لضمان أداء السعي بين الصفا والمروة بدون انقطاع، مع مؤشر ذكي للشحن.' },
-          { id: '3', title: 'منى', description: 'تصميم هندسي قابل للطي في 3 ثوانٍ يسهل نقله وتخزينه في الخيام والمساحات الضيقة جداً.' },
-          { id: '4', title: 'عرفات', description: 'نظام تعليق هيدروليكي وعجلات قوية تتحمل مختلف التضاريس لضمان راحة فائقة الحاج يوم عرفة.' },
+          { id: '1', title: 'الأسواق', description: 'كراسي مريحة تتحمل الازدحام وتوفر سهولة في الحركة داخل الأسواق والمجمعات التجارية، مزودة بحساسات أمان لتفادي الاصطدام.' },
+          { id: '2', title: 'الحدائق', description: 'بطاريات ليثيوم تدوم طويلاً لضمان أداء سلس في الحدائق والأماكن المفتوحة بدون انقطاع، مع مؤشر ذكي للشحن.' },
+          { id: '3', title: 'الرحلات', description: 'تصميم هندسي قابل للطي في 3 ثوانٍ يسهل نقله وتخزينه في صناديق السيارات والمساحات الضيقة جداً.' },
+          { id: '4', title: 'المستشفيات', description: 'نظام تعليق هيدروليكي وعجلات قوية تتحمل مختلف الأرضيات لضمان راحة فائقة أثناء المراجعات الطبية.' },
         ]
       },
       cta: {
@@ -147,7 +147,7 @@ export const useStore = create<StoreState>()(
         showHero: true,
         showProducts: true,
         showFeatures: true,
-        showHajjBenefits: true,
+        showPromoBenefits: true,
         showCTA: true,
       },
 

@@ -1,6 +1,6 @@
-# MSCO Hajj Medical Ecommerce
+# MSCO Medical Ecommerce
 
-A high-tech, modern ecommerce platform for Hajj medical supplies. Featuring a sleek dark-mode design, bento box layouts, and interactive components.
+A high-tech, modern ecommerce platform for medical supplies. Featuring a sleek dark-mode design, bento box layouts, and interactive components.
 
 ## 🚀 Features
 - **Modern UI**: Built with Next.js, Tailwind CSS, and Framer Motion.

@@ -45,7 +45,7 @@ export default function SettingsManager() {
               { id: 'showHero', label: 'القسم الرئيسي (العلوي)' },
               { id: 'showFeatures', label: 'قسم المميزات' },
               { id: 'showProducts', label: 'شبكة المنتجات' },
-              { id: 'showHajjBenefits', label: 'فوائد الحج' },
+              { id: 'showPromoBenefits', label: 'المميزات الإضافية' },
               { id: 'showCTA', label: 'دعوة لاتخاذ إجراء (السفلي)' },
             ].map((section) => (
               <div key={section.id} className="flex items-center justify-between p-4 rounded-xl border border-gray-100 hover:bg-gray-50 transition-colors">

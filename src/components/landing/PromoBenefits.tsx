@@ -4,10 +4,10 @@ import { useStore } from "@/store/useStore";
 import { motion } from "framer-motion";
 import { MapPin, Compass, Shield, Rocket, ChevronLeft } from "lucide-react";
 
-export default function HajjBenefits() {
+export default function PromoBenefits() {
   const { benefits, settings } = useStore();
 
-  if (!settings.showHajjBenefits) return null;
+  if (!settings.showPromoBenefits) return null;
 
   const icons = [MapPin, Compass, Shield, Rocket];
 
