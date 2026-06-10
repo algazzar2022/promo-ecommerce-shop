@@ -33,18 +33,20 @@ export async function GET() {
       ['app_store_state']
     );
 
+    const headers = { 'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate' };
+
     if (Array.isArray(rows) && rows.length > 0) {
       const data = rows[0] as { config_value: string };
       // config_value might be stored as stringified JSON or directly depending on how we insert
       try {
         const parsed = JSON.parse(data.config_value);
-        return NextResponse.json(parsed);
+        return NextResponse.json(parsed, { headers });
       } catch {
-        return NextResponse.json(data.config_value || {});
+        return NextResponse.json(data.config_value || {}, { headers });
       }
     }
     
-    return NextResponse.json({});
+    return NextResponse.json({}, { headers });
   } catch (error: unknown) {
     const msg = error instanceof Error ? error.message : 'Unknown error';
     console.error('MySQL Load Error:', msg);

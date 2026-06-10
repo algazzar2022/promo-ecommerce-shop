@@ -208,7 +208,7 @@ export const useStore = create<StoreState>()(
       loadFromServer: async () => {
         try {
           console.log('Fetching state from Supabase...');
-          const res = await fetch('/api/store');
+          const res = await fetch('/api/store', { cache: 'no-store' });
           const data = await res.json();
           
           if (data && !data.error && Object.keys(data).length > 0) {
@@ -241,12 +241,17 @@ export const useStore = create<StoreState>()(
           const dataToSave = Object.fromEntries(
             Object.entries(state).filter(([, v]) => typeof v !== 'function')
           );
-          await fetch('/api/store', {
+          const response = await fetch('/api/store', {
             method: 'POST',
             body: JSON.stringify(dataToSave),
           });
+          if (!response.ok) {
+            console.error('Server save error:', await response.text());
+            alert('تعذر حفظ البيانات في قاعدة البيانات. يرجى التأكد من أن حجم الصور ليس كبيراً جداً (الحد الأقصى 2 ميجابايت) والمحاولة مرة أخرى.');
+          }
         } catch (error) {
           console.error('Failed to save to server:', error);
+          alert('خطأ في الاتصال بالخادم أثناء الحفظ.');
         }
       },
     }),
