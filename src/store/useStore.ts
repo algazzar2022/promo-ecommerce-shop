@@ -65,7 +65,7 @@ export interface StoreState {
   reorderProducts: (products: Product[]) => void;
   updateCTA: (cta: Partial<StoreState['cta']>) => void;
   updateSettings: (settings: Partial<StoreState['settings']>) => void;
-  
+
   // Sync Actions
   loadFromServer: () => Promise<void>;
   saveToServer: () => Promise<void>;
@@ -120,8 +120,8 @@ export const useStore = create<StoreState>()(
         backgroundImage: '/images/promo_hero_bg.png',
         badge1Title: 'دعم فني متواصل',
         badge1Value: '24/7',
-        badge2Title: 'ضمان 3 سنوات',
-        badge2Value: 'شامل المحرك والبطارية'
+        badge2Title: 'ضمان سنتين',
+        badge2Value: 'لايشمل البطارية'
       },
       products: defaultProducts,
       features: defaultFeatures,
@@ -210,7 +210,7 @@ export const useStore = create<StoreState>()(
           console.log('Fetching state from Supabase...');
           const res = await fetch('/api/store', { cache: 'no-store' });
           const data = await res.json();
-          
+
           if (data && !data.error && Object.keys(data).length > 0) {
             console.log('State received from server:', data);
             // Deep merge or complete override
