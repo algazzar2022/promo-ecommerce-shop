@@ -256,7 +256,7 @@ export const useStore = create<StoreState>()(
       },
     }),
     {
-      name: 'msco-storage-v4', // Incremented version to clear old local storage
+      name: 'msco-storage-v5', // Incremented version to clear old local storage
     }
   )
 );

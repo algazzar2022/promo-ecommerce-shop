@@ -4,6 +4,7 @@ import ProductGrid from "@/components/landing/ProductGrid";
 import PromoBenefits from "@/components/landing/PromoBenefits";
 import CTASection from "@/components/landing/CTASection";
 import HydrateStore from "@/components/HydrateStore";
+import PageLoader from "@/components/PageLoader";
 import { createClient } from "@supabase/supabase-js";
 
 async function getStoreData() {
@@ -30,6 +31,7 @@ export default async function Home() {
 
   return (
     <main className="min-h-screen bg-gray-50 flex flex-col">
+      <PageLoader />
       <HydrateStore initialData={initialData} />
       <HeroSection />
       <FeaturesSection />
