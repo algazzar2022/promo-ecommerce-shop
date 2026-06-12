@@ -121,7 +121,7 @@ export const useStore = create<StoreState>()(
         badge1Title: 'دعم فني متواصل',
         badge1Value: '24/7',
         badge2Title: 'ضمان سنتين',
-        badge2Value: 'لايشمل البطارية'
+        badge2Value: 'لا تشمل البطارية'
       },
       products: defaultProducts,
       features: defaultFeatures,
