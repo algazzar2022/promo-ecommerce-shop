@@ -24,8 +24,15 @@ export async function GET() {
       }
       throw error;
     }
+    let dbData = data?.value || {};
     
-    return NextResponse.json(data?.value || {}, { headers });
+    if (dbData.hero && typeof dbData.hero.badge2Title === 'string' && dbData.hero.badge2Title.includes('3 سنوات')) {
+      dbData.hero.badge2Title = 'ضمان سنتين';
+      dbData.hero.badge2Value = 'لا تشمل البطارية';
+      supabase.from('config').upsert({ key: 'app_store_state', value: dbData }).then();
+    }
+
+    return NextResponse.json(dbData, { headers });
   } catch (error: unknown) {
     const msg = error instanceof Error ? error.message : 'Unknown error';
     console.error('Supabase Load Error:', msg);
