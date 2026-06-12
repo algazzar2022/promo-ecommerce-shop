@@ -24,7 +24,7 @@ export async function GET() {
       }
       throw error;
     }
-    let dbData = data?.value || {};
+    const dbData = data?.value || {};
     
     if (dbData.hero && typeof dbData.hero.badge2Title === 'string' && dbData.hero.badge2Title.includes('3 سنوات')) {
       dbData.hero.badge2Title = 'ضمان سنتين';
