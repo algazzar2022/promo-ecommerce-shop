@@ -1,5 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 import { NextResponse } from 'next/server';
+import { revalidatePath } from 'next/cache';
 
 export const dynamic = 'force-dynamic';
 
@@ -53,6 +54,9 @@ export async function POST(request: Request) {
       }, { onConflict: 'key' });
 
     if (error) throw error;
+    
+    // Clear Next.js cache so changes appear immediately
+    revalidatePath('/', 'layout');
     
     return NextResponse.json({ success: true });
   } catch (error: unknown) {
